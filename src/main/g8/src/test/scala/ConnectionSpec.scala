@@ -23,22 +23,18 @@ class ConnectionSpec extends FlatSpec with Matchers with BeforeAndAfterAll {
     // Get a session on the test keyspace.  Caller should call .close on the returned object
     // when finished with it.
     def testSession = {
-        cluster.connect(s"$testKeyspaceName")
+        cluster.connect(testKeyspaceName)
     }
 
     // Set up
     override def beforeAll(): Unit = {
         val session = cluster.connect()
-        session.execute(s"""CREATE KEYSPACE IF NOT EXISTS $testKeyspaceName
-           WITH replication = {'class':'SimpleStrategy', 'replication_factor':3}""")
+        session.execute("CREATE KEYSPACE IF NOT EXISTS "+ testKeyspaceName + 
+           " WITH replication = {'class':'SimpleStrategy', 'replication_factor':3}")
         session.close()
 
         val sessionKeyspace = testSession
-        sessionKeyspace.execute(s"""
-          CREATE TABLE IF NOT EXISTS $testTable (
-            user_name varchar PRIMARY KEY,
-            email varchar
-            )""")
+        sessionKeyspace.execute("CREATE TABLE IF NOT EXISTS " + testTable + " (user_name varchar PRIMARY KEY, email varchar)")
         sessionKeyspace.close()
     }
 
@@ -72,13 +68,13 @@ class ConnectionSpec extends FlatSpec with Matchers with BeforeAndAfterAll {
         val session = testSession
 
         // Insert a user
-        session.execute(s"INSERT INTO $testTable (user_name, email) values('FavoriteExampleAuthor', 'john@particlewave.com')")
+        session.execute("INSERT INTO " + testTable + " (user_name, email) values('FavoriteExampleAuthor', 'john@particlewave.com')")
 
         // Verify we have exactly one row with our user in it
         val statement = QueryBuilder
             .select()
             .all()
-            .from(s"$testKeyspaceName", s"$testTable")
+            .from(testKeyspaceName, testTable)
             //.where(eq("user_name", "FavoriteExampleAuthor"))
         val results = session.execute(statement).all()
         val iterator = results.iterator()
@@ -90,7 +86,7 @@ class ConnectionSpec extends FlatSpec with Matchers with BeforeAndAfterAll {
         rowCount shouldBe 1
 
         // Clean up
-        session.execute(s"DELETE FROM $testTable where user_name = 'FavoriteExampleAuthor'")
+        session.execute(s"DELETE FROM " + testTable + " where user_name = 'FavoriteExampleAuthor'")
         session.close()
     }
 
