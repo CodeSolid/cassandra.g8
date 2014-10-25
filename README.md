@@ -1,4 +1,4 @@
-# Giter8 Starer Project for Cassandra
+# Giter8 Starter Project for Cassandra
 
 This is a [giter8](https://github.com/n8han/giter8) template for a simple Cassandra project using Scala.
 
@@ -16,7 +16,8 @@ sbt test
 
 ## Assumptions
 * You have Cassandra running on your local machine (or see see src/test/resources/reference.conf to configure Cassandra).
-* Scala version 2.11.2 (for now -- if requested I'll probably add support for other Scala versions)
+* Scala version 2.11.2.  I may add support for other versions soon, but the build.sbt is pretty minimal and should be easy
+  to tweak in the meantime.
 * You'll need sbt and giter8 of course.
 
 Enjoy, and check out thes other great [giter8 templates](https://github.com/n8han/giter8/wiki/giter8-templates) as well.
