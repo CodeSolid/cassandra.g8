@@ -12,7 +12,7 @@ sbt test
 ## Features
 * Uses the [DataStax Cassandra Driver](http://www.datastax.com/documentation/developer/java-driver/2.0/java-driver/whatsNew2.html)
 * Sets up a test connection and tests some basic database operations in [ScalaTest](http://www.scalatest.org/) project.
-* Uses the [TypeSafe Config project[https://github.com/typesafehub/config] for cluster configuration. 
+* Uses the [TypeSafe Config](https://github.com/typesafehub/config) library for cluster configuration. 
 
 ## Assumptions
 * You have Cassandra running on your local machine (or see see src/test/resources/reference.conf to configure Cassandra).
