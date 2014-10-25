@@ -2,5 +2,5 @@
 
 Usage
 ```
-g8 codesolid/
+g8 codesolid/cassandra.g8
 ```
