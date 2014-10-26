@@ -16,8 +16,8 @@ sbt test
 
 ## Assumptions
 * You have Cassandra running on your local machine (or see see src/test/resources/reference.conf to configure Cassandra).
-* Scala version 2.11.2.  I may add support for other versions soon, but the build.sbt is pretty minimal and should be easy
-  to tweak in the meantime.
+* I've tested this on Scala 2.10.4 and 2.11.2.  It was designed to run on 2.11, the fact that it worked on 2.10 surprised me,
+but don't look a gift horse in the mouth, etc.
 * You'll need sbt and giter8 of course.
 
 Enjoy, and check out thes other great [giter8 templates](https://github.com/n8han/giter8/wiki/giter8-templates) as well.
